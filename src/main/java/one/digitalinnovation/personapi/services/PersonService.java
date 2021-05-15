@@ -1,5 +1,8 @@
 package one.digitalinnovation.personapi.services;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,5 +33,13 @@ public class PersonService {
 				.builder()
 				.message("Person create with ID " + personSaved.getId().toString())
 				.build();
+	}
+
+	@Transactional(readOnly = true)
+	public List<PersonDTO> listAll() {
+		List<Person> allPerson = repository.findAll();
+		return allPerson.stream()
+				.map(personMapper::toDTO)
+				.collect(Collectors.toList());
 	}
 }

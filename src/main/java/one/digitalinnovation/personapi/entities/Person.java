@@ -1,6 +1,5 @@
 package one.digitalinnovation.personapi.entities;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -23,8 +22,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Person implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Person {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
